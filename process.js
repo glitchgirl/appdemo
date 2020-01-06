@@ -18,14 +18,17 @@ function print(){
   // move this from check order and repeat it, reduce rep
 }
 function checkOrder(prettyOrder) {
-  for(i =1; i < prettyOrder.length; i +=2){
+  for(i = 1; i < prettyOrder.length; i +=2){
+    /* if its not in the menu object i want to print an error message,
+    then remove it from the array */
     if(!(prettyOrder[i] in menu)){
-      console.log(prettyOrder[i]);
       const menuError = "That item isn't on the menu"
       const node = document.createElement('LI');
       const textnode = document.createTextNode(menuError);
       node.appendChild(textnode);
       document.getElementById('listOrder').appendChild(node);
+      prettyOrder.splice(i-1, 2);
+      console.log(prettyOrder);
     }
   }
 }
